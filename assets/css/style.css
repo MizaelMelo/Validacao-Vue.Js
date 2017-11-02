@@ -1,0 +1,8 @@
+.esconde {
+    color: #f04242;
+    font-size: 15px;
+}
+.has-error,.has-error:focus {
+
+    border-color: #f04242;
+}

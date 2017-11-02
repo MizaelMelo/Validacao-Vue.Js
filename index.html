@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <title>Validação de Formulário com VueJs</title>
+</head>
+<body>
+    <div id="form" class="m-5">
+        <div class="form-control">
+            <h4 style="margin-bottom:30px;" class="text-center">Cadastro de Produto</h4>
+            <form action="#" v-on:submit.prevent="validateBeforeSubmit" ref="cadastro">
+                <div class="row">
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="inputCodigo">Código</label>
+                            <input type="text" name="codigo" class="form-control" v-validate="{required: true, regex: /^[0-9]{6}$/}"
+                                    :class="{ 'has-error': errors.has('codigo') }">
+                            <span class="esconde" style="display:none;" v-show="errors.has('codigo')">{{ errors.first('codigo') }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputDescricao">Descrição</label>
+                            <input type="text" class="form-control" name="obrigatorio" v-validate="{ required: true }"
+                                    :class="{ 'has-error': errors.has('obrigatorio') }">
+                            <span class="esconde" style="display:none;" v-show="errors.has('obrigatorio')">{{ errors.first('obrigatorio') }}</span>                                    
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inputFornedor">Fornecedor</label>
+                            <input type="text" class="form-control" name="obrigatorio" v-validate="{ required: true }"
+                                    :class="{ 'has-error': errors.has('obrigatorio') }">
+                            <span class="esconde" style="display:none;" v-show="errors.has('obrigatorio')">{{ errors.first('obrigatorio') }}</span>                                       
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label for="inputBarra">Código de Barras</label>
+                            <input type="text" class="form-control" name="codbar" v-validate="{ required: true, regex: /^[0-9]/ }"
+                                    :class="{ 'has-error': errors.has('codbar') }">
+                            <span class="esconde" style="display:none;" v-show="errors.has('codbar')">{{ errors.first('codbar') }}</span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group">
+                            <label for="inputPreco">Preço</label>
+                            <input type="text" class="form-control" name="preco" v-validate="{ required: true, regex: /^[0-9]+,[0-9]/ }"
+                                    :class="{ 'has-error': errors.has('preco') }">
+                            <span class="esconde" style="display:none;" v-show="errors.has('preco')">{{ errors.first('preco') }}</span>        
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="inputComplemento">Complemento</label>
+                            <input type="text" class="form-control">
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-success" style="margin-right: 10px;margin-bottom:20px;">Salvar</button>
+            </form>
+        </div>
+    </div>
+    
+    <script src="https://unpkg.com/vue"></script>
+    <script src="https://unpkg.com/vee-validate@2.0.0-rc.8"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.js"></script>
+    <script src="dist/app.js"></script>
+</body>
+</html>
